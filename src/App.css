@@ -31,3 +31,25 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  width: 90%;
+}
+
+.login-form {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 60px;
+}
+
+input {
+  margin-right: 20px;
+  padding: 0 25px;
+  background-color: #e8f0fe;
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 5px;
+}
+
+.welcome-text {
+  
+}
