@@ -35,7 +35,7 @@
 .login-form {
   display: flex;
   justify-content: flex-start;
-  padding: 40px 30px;
+  padding: 40px 40px;
   width: auto;
   background-color: #349AFA;
 }
@@ -50,6 +50,7 @@ input {
 
 .welcome-text {
   margin-top: 90px;
+  line-height: 30px;
 }
 
 .home-link { 

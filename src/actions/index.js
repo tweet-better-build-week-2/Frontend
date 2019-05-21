@@ -1,5 +1,4 @@
 import axios from 'axios';
-//import { axiosWithAuth } from '../axiosWithAuth';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -15,3 +14,19 @@ export const login = creds => dispatch => {
       })
       .catch(err => console.log(err));
   };
+
+export const ANALYZE_START = 'ANALYZE_START';
+export const ANALYZE_SUCCESS = 'ANALYZE_SUCCESS';
+export const ANALYZE_FAILURE = 'ANALYZE_FAILURE';
+
+export const analyze = tweet  => dispatch => {
+    dispatch({ type: ANALYZE_START });
+    return axios
+    .post('https://sensemodel.herokuapp.com/api', tweet)
+    .then(res => {
+        dispatch({ type: ANALYZE_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+        dispatch({ type: ANALYZE_FAILURE });
+    });
+};

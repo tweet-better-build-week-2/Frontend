@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import Loader from 'react-loader-spinner';
+// import Loader from 'react-loader-spinner';
 import { login } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -33,25 +33,11 @@ class LoginForm extends Component {
         return (
             <div>
                 <div className="login-form">
-                    {/* <input
-                        type="text"
-                        name="username"
-                        value={this.state.credentials.username}
-                        onChange={this.handleChange}
-                        placeholder="Username"
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={this.state.credentials.password}
-                        onChange={this.handleChange}
-                        placeholder="Password"
-                    /> */}
                     <Link className="home-link" to="/">Home</Link>
                 </div>
                 <div className="welcome-text">
-                    <h2>Tweets Reinvented</h2>
-                    <p>Make your tweets standout with our analytics tool. <br /> We check thousands of tweets and give you feedback <br />so you can make your Tweets Shine!</p>
+                    <h1>Tweeting Reinvented</h1>
+                    <h4>How will your Tweet be Received?<br /> We check thousands of tweets and give you feedback <br />so you can make your Tweets Shine!</h4>
                     <Button
                         variant="contained"
                         color="primary"
