@@ -1,17 +1,21 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
+import { Route } from 'react-router-dom';
 import './App.css';
+import LoginForm from './Components/LoginForm';
+import SignUpForm from './Components/SignUpForm';
 
-function App() {
-  return (
-    <div className="App">
-      <AppBar color="primary" />
-      <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-    </div>
-  );
+
+class App extends React.Component {
+
+
+  render() {
+    return (
+      <div className="App">
+        <Route exact path="/" component={LoginForm} />
+        <Route exact path="/signup" component={SignUpForm} />
+      </div>
+    );
+  }
 }
 
 export default App;

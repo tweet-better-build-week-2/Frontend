@@ -31,3 +31,23 @@
     transform: rotate(360deg);
   }
 }
+
+.login-form {
+  display: flex;
+  justify-content: flex-end;
+  padding: 40px 30px;
+  width: auto;
+  background-color: #4334e0
+}
+
+input {
+  margin-right: 20px;
+  padding: 0 25px;
+  background-color: #e8f0fe;
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 5px;
+}
+
+.welcome-text {
+  margin-top: 90px;
+}
