@@ -34,10 +34,10 @@
 
 .login-form {
   display: flex;
-  justify-content: flex-end;
-  padding: 40px 30px;
+  justify-content: flex-start;
+  padding: 40px 40px;
   width: auto;
-  background-color: #4334e0
+  background-color: #349AFA;
 }
 
 input {
@@ -50,4 +50,10 @@ input {
 
 .welcome-text {
   margin-top: 90px;
+  line-height: 30px;
+}
+
+.home-link { 
+  color: white;
+  text-decoration: none;
 }
