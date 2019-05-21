@@ -32,14 +32,12 @@
   }
 }
 
-.App {
-  width: 90%;
-}
-
 .login-form {
   display: flex;
   justify-content: flex-end;
-  margin-top: 60px;
+  padding: 40px 30px;
+  width: auto;
+  background-color: #4334e0
 }
 
 input {
@@ -51,5 +49,5 @@ input {
 }
 
 .welcome-text {
-  
+  margin-top: 90px;
 }
