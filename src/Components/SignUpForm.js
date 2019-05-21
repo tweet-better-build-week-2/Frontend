@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 import "./SignUpForm.css";
 
 const styles = theme => ({
@@ -36,7 +38,17 @@ class SignUpForm extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className="signup-container">
+            <div>
+                <div className="header">
+                <Button
+                        style={{
+                            color: "#ffffff",
+                            borderColor: "#ffffff"
+                        }}
+                        variant="outlined"><Link to="/">
+                            Back to Login
+                    </Link></Button>
+                </div>
                 <form className={classes.container} noValidate autoComplete="off">
                     <TextField
                         id="outlined-name"
@@ -51,7 +63,6 @@ class SignUpForm extends Component {
                     <TextField
                         id="outlined-uncontrolled"
                         label="Usernanme"
-                        defaultValue="Username"
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
@@ -61,11 +72,11 @@ class SignUpForm extends Component {
                         required
                         id="outlined-required"
                         label="Password"
-                        defaultValue="Password"
                         className={classes.textField}
                         margin="normal"
                         variant="outlined"
                     />
+                    <Button variant="contained" color="primary" >Sign Up</Button>
                 </form>
 
             </div>

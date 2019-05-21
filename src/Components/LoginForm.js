@@ -25,15 +25,15 @@ class LoginForm extends Component {
     login = e => {
         e.preventDefault();
         this.props.login(this.state.credentials).then(() => {
-            this.props.history.push('/protected');
+            this.props.history.push('/');
         });
     };
 
     render() {
         return (
             <div>
-                <form className="login-form" onSubmit={this.login}>
-                    <input
+                <div className="login-form">
+                    {/* <input
                         type="text"
                         name="username"
                         value={this.state.credentials.username}
@@ -46,25 +46,23 @@ class LoginForm extends Component {
                         value={this.state.credentials.password}
                         onChange={this.handleChange}
                         placeholder="Password"
-                    />
-                    <Button
-                        style={{
-                            color: "#ffffff",
-                            borderColor: "#ffffff"
-                        }}
-                        variant="outlined">
-                        {this.props.isLoggingIn ? (
-                            <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
-                        ) : (
-                                'Log In'
-                            )}
-                    </Button>
-                </form>
+                    /> */}
+                    <Link className="home-link" to="/">Home</Link>
+                </div>
                 <div className="welcome-text">
-          <h2>Tweets Reinvented</h2>
-          <p>Make your tweets standout with our analytics tool. <br /> We check thousands of tweets and give you feedback <br />so you can make your Tweets Shine!</p>
-          <Button variant="contained" color="primary" ><Link to="/signup">Signup</Link></Button>
-        </div>
+                    <h2>Tweets Reinvented</h2>
+                    <p>Make your tweets standout with our analytics tool. <br /> We check thousands of tweets and give you feedback <br />so you can make your Tweets Shine!</p>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{
+                            backgroundColor: "#349AFA",
+                            color: "white",
+                            textDecoration: "none"
+                        }}>
+                        Log Into Twitter
+                    </Button>
+                </div>
             </div>
         )
     }
@@ -72,9 +70,9 @@ class LoginForm extends Component {
 
 const mapStateToProps = state => ({
     isLoggingIn: state.isLoggingIn
-  });
-  
-  export default connect(
+});
+
+export default connect(
     mapStateToProps,
     { login }
-  )(LoginForm);
+)(LoginForm);
