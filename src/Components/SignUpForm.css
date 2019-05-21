@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px 30px;
+    width: auto;
+    background-color: #4334e0
+}
+
+.SignUpForm-container-174{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
+}
