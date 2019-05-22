@@ -20,9 +20,8 @@ class Tweet extends React.Component {
 
     handleChanges = e => {
         this.setState({
-            [e.target.name]: e.target.value
+          [e.target.name]: e.target.value
         })
-        console.log(this.state)
     }
 
     analyzeTweet = (e) => {
@@ -50,8 +49,9 @@ class Tweet extends React.Component {
                             label="Tweet"
                             multiline
                             rowsMax="4"
-                            value={this.state.multiline}
-                            onChange={this.handleChange}
+                            name='texts'
+                            value={this.state.texts}
+                            onChange={this.handleChanges}
                             margin="normal"
                             helperText="280 characters max"
                             variant="outlined"
