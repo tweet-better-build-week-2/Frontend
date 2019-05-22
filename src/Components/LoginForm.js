@@ -4,12 +4,16 @@ import Button from '@material-ui/core/Button';
 import { login } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Auth from "../Auth";
+
+const auth = new Auth();
 
 class LoginForm extends Component {
     state = {
         credentials: {
             username: '',
-            password: ''
+            password: '',
+            auth
         }
     };
 
@@ -42,6 +46,7 @@ class LoginForm extends Component {
                     <Button
                         variant="contained"
                         color="primary"
+                        onClick={auth.login}
                         style={{
                             backgroundColor: "#349AFA",
                             color: "white",
