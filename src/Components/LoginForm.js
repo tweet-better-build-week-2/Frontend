@@ -4,6 +4,9 @@ import Button from '@material-ui/core/Button';
 import { login } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import auth0 from 'auth0-js';
+import Auth from '../Auth/Auth'; // AUTH0
+const auth = new Auth(); // AUTH0
 
 class LoginForm extends Component {
     state = {
@@ -24,6 +27,7 @@ class LoginForm extends Component {
 
     login = e => {
         e.preventDefault();
+        auth.login(); /// AUTH 0
         this.props.login(this.state.credentials).then(() => {
             this.props.history.push('/');
         });
@@ -39,6 +43,7 @@ class LoginForm extends Component {
                     <h1>Tweeting Reinvented</h1>
                     <h4>How will your Tweet be Received?<br /> We check thousands of tweets and give you feedback <br />so you can make your Tweets Shine!</h4>
                     <Button
+                    onClick={this.login} // AUTH0
                         variant="contained"
                         color="primary"
                         style={{
@@ -61,4 +66,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { login }
-)(LoginForm);
+)(LoginForm)
