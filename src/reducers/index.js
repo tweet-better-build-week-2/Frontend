@@ -4,7 +4,7 @@ const initialState = {
     error: "",
     fetchingData: false,
     isLoggingIn: false,
-    score: ""
+    score: "",
 };
 
 const reducer = (state = initialState, action) => {
