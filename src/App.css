@@ -35,7 +35,7 @@
 .login-form {
   display: flex;
   justify-content: flex-start;
-  padding: 40px 40px;
+  padding: 20px;
   width: auto;
   background-color: #349AFA;
 }
