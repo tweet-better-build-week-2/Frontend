@@ -1,5 +1,6 @@
 /* eslint no-restricted-globals: 0 */
 import auth0 from 'auth0-js';
+import jwtDecode from "jwt-decode";
 
 const LOGIN_SUCCESS_PAGE = "/tweet";
 const LOGIN_FAILURE_PAGE = "/";
@@ -49,6 +50,14 @@ export default class Auth {
       localStorage.removeItem("id_token");
       localStorage.removeItem("expires_at");
       location.pathname = LOGIN_FAILURE_PAGE;
+  }
+
+  getProfile() {
+      if (localStorage.getItem("id_token")) {
+          return jwtDecode(localStorage.getItem("id_token"));
+      } else {
+          return {};
+      }
   }
 
 }

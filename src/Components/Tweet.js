@@ -11,6 +11,9 @@ import './Tweet.css';
 
 const auth = new Auth();
 
+let username = auth.getProfile().name;
+let profilePicture = auth.getProfile().picture;
+
 class Tweet extends React.Component {
     constructor() {
         super();
@@ -51,6 +54,10 @@ class Tweet extends React.Component {
                 </div>
                 <div className="outside-container">
                     <div className="tweet-container">
+                        <div className="twitter-profile">
+                        <img className="twitter-img" src={profilePicture} alt="{username}'s profile pic"/> 
+                        <p>Hi {username}, what would you like to tweet?</p>
+                        </div>
                         <TextField
                             id="outlined-multiline-flexible"
                             label="Tweet"
