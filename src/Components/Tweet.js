@@ -66,7 +66,7 @@ class Tweet extends React.Component {
                                     color: "white",
                                     textDecoration: "none"
                                 }}>{this.props.fetchingData ? (
-                                    <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+                                    <Loader type="ThreeDots" color="#fffff" height="12" width="26" />
                                 ) : (
                                         'Analyze'
                                     )}
@@ -81,6 +81,9 @@ class Tweet extends React.Component {
                                 }}>
                                 Post Twitter
                                 </Button>
+                                <div className="score-display">
+                                    <p>Score: {this.props.score}</p>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +93,8 @@ class Tweet extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    fetchingData: state.fetchingData
+    fetchingData: state.fetchingData,
+    score: state.score
 });
 
 export default connect(

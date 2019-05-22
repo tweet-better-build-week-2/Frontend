@@ -24,6 +24,8 @@ export const analyze = tweet  => dispatch => {
     return axios
     .post('https://sensemodel.herokuapp.com/api', tweet)
     .then(res => {
+      console.log(res)
+      console.log(res.data)
         dispatch({ type: ANALYZE_SUCCESS, payload: res.data});
     })
     .catch(err => {

@@ -35,7 +35,7 @@
 .login-form {
   display: flex;
   justify-content: flex-start;
-  padding: 40px 40px;
+  padding: 40px;
   width: auto;
   background-color: #349AFA;
 }
@@ -56,4 +56,5 @@ input {
 .home-link { 
   color: white;
   text-decoration: none;
+  margin-right: 20px;
 }
