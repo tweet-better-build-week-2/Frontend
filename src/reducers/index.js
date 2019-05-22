@@ -28,7 +28,8 @@ const reducer = (state = initialState, action) => {
         case ANALYZE_SUCCESS:
             return {
                 ...state,
-                score: action.payload
+                score: action.payload,
+                fetchingData: false
             }
         case ANALYZE_FAILURE:
           return {
