@@ -22,12 +22,10 @@ class Tweet extends React.Component {
         this.setState({
           [e.target.name]: e.target.value
         })
-        console.log(this.state)
     }
 
     analyzeTweet = (e) => {
         e.preventDefault();
-        console.log(this.state)
         this.props.analyze(this.state);
     }
 

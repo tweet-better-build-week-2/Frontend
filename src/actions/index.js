@@ -27,6 +27,6 @@ export const analyze = tweet  => dispatch => {
         dispatch({ type: ANALYZE_SUCCESS, payload: res.data});
     })
     .catch(err => {
-        dispatch({ type: ANALYZE_FAILURE });
+        dispatch({ type: ANALYZE_FAILURE, payload: err });
     });
 };
