@@ -20,7 +20,7 @@ class Tweet extends React.Component {
 
     handleChanges = e => {
         this.setState({
-          [e.target.name]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -81,9 +81,17 @@ class Tweet extends React.Component {
                                 }}>
                                 Post Twitter
                                 </Button>
-                                <div className="score-display">
-                                    <p>Score: {this.props.score}</p>
-                                </div>
+                        </div>
+                        <div className="score-display">
+                            {this.props.score < 0 ?
+                                (<p>Your tweet might be more negative than it reads to you now.</p>)
+                                :
+                                this.props.score > 0.5 ? (<p>You're improving Twitter one tweet at a time!</p>)
+                                :
+                                this.props.score === '' ? (<p>Ready to Analyze</p>)
+                                :
+                                    (<p>This is a pretty neutral tweet</p>)}
+                            {/* <p>Score: {this.props.score}</p> */}
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,8 @@ const reducer = (state = initialState, action) => {
         case ANALYZE_START:
             return {
                 ...state,
-                fetchingData: true
+                fetchingData: true,
+                score: ''
             };
         case ANALYZE_SUCCESS:
             return {
