@@ -6,9 +6,13 @@ import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { analyze } from '../actions';
+import Auth from "../Auth";
 import './Tweet.css';
 
+const auth = new Auth();
 
+let username = auth.getProfile().name;
+let profilePicture = auth.getProfile().picture;
 
 class Tweet extends React.Component {
     constructor() {
@@ -16,6 +20,12 @@ class Tweet extends React.Component {
         this.state = {
             texts: ''
         }
+    }
+
+    componentDidMount(){
+        const auth = new Auth();
+        auth.handleAuthentication();
+        if (!localStorage.getItem("access_token")) this.props.history.push("/")
     }
 
     handleChanges = e => {
@@ -40,10 +50,14 @@ class Tweet extends React.Component {
         return (
             <div>
                 <div className="login-form">
-                    <Link className="home-link" to="/">Home</Link>
+                    <Link className="home-link" to="/" onClick={auth.logout}>Logout</Link>
                 </div>
                 <div className="outside-container">
                     <div className="tweet-container">
+                        <div className="twitter-profile">
+                        <img className="twitter-img" src={profilePicture} alt="{username}'s profile pic"/> 
+                        <p>Hi {username}, what would you like to tweet?</p>
+                        </div>
                         <TextField
                             id="outlined-multiline-flexible"
                             label="Tweet"
@@ -91,7 +105,6 @@ class Tweet extends React.Component {
                                 this.props.score === '' ? (<p>Ready to Analyze</p>)
                                 :
                                     (<p>This is a Pretty Neutral Tweet</p>)}
-                            {/* <p>Score: {this.props.score}</p> */}
                         </div>
                     </div>
                 </div>
