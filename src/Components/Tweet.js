@@ -79,18 +79,18 @@ class Tweet extends React.Component {
                                     color: "white",
                                     textDecoration: "none"
                                 }}>
-                                Post Twitter
+                                Post
                                 </Button>
                         </div>
                         <div className="score-display">
-                            {this.props.score < 0 ?
-                                (<p>Your tweet might be more negative than it reads to you now.</p>)
+                            {this.props.score < -0.2 ?
+                                (<p>Your Tweet May Seem Negative</p>)
                                 :
-                                this.props.score > 0.5 ? (<p>You're improving Twitter one tweet at a time!</p>)
+                                this.props.score > 0.5 ? (<p>You're Improving Twitter One Tweet at a Time</p>)
                                 :
                                 this.props.score === '' ? (<p>Ready to Analyze</p>)
                                 :
-                                    (<p>This is a pretty neutral tweet</p>)}
+                                    (<p>This is a Pretty Neutral Tweet</p>)}
                             {/* <p>Score: {this.props.score}</p> */}
                         </div>
                     </div>
