@@ -34,6 +34,7 @@ class LoginForm extends Component {
             <div>
                 <div className="login-form">
                     <Link className="home-link" to="/">Home</Link>
+                    <Link className="home-link" to="/tweet">Tweet</Link>
                 </div>
                 <div className="welcome-text">
                     <h1>Tweeting Reinvented</h1>

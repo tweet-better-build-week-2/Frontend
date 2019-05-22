@@ -66,7 +66,7 @@ class Tweet extends React.Component {
                                     color: "white",
                                     textDecoration: "none"
                                 }}>{this.props.fetchingData ? (
-                                    <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+                                    <Loader type="ThreeDots" color="#fffff" height="12" width="26" />
                                 ) : (
                                         'Analyze'
                                     )}
