@@ -38,7 +38,7 @@ class LoginForm extends Component {
             <div>
                 <div className="login-form">
                     <Link className="home-link" to="/">Home</Link>
-                    <Link className="home-link" to="/tweet">Tweet</Link>
+                    {/* <Link className="home-link" to="/tweet">Tweet</Link> */}
                 </div>
                 <div className="welcome-text">
                     <h1>Tweeting Reinvented</h1>
@@ -52,7 +52,7 @@ class LoginForm extends Component {
                             color: "white",
                             textDecoration: "none"
                         }}>
-                        Log Into Twitter
+                        Check a Tweet
                     </Button>
                 </div>
             </div>
