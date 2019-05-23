@@ -133,13 +133,11 @@ class Tweet extends React.Component {
                                     :
                                     this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Neutral<br />Score: {this.percentageScore()}%</p>)
                                         :
-                                        this.props.score === 0 && this.state.texts === "" ? (<p>Whoops, no Tweet Found</p>)
+                                        this.props.score > -0.2 && this.props.score < 0.2 && this.props.score !== "" ? (<p>Tweet Sentiment = Positive<br />Score: {this.percentageScore()}%</p>)
                                             :
-                                            this.props.score > -0.2 && this.props.score < 0.2 && this.props.score !== "" ? (<p>Tweet Sentiment = Positive<br />Score: {this.percentageScore()}%</p>)
+                                            this.props.score > 0.2 ? (<p>Tweet Sentiment = Very Positive<br />Score: {this.percentageScore()}%</p>)
                                                 :
-                                                this.props.score > 0.2 ? (<p>Tweet Sentiment = Very Positive<br />Score: {this.percentageScore()}%</p>)
-                                                    :
-                                                    this.props.score === "" ? (<p>Ready to Analyze</p>) : null}
+                                                this.props.score === "" ? (<p>Ready to Analyze</p>) : null}
 
                         </div>
                     </div>
