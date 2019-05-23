@@ -42,7 +42,7 @@ class Tweet extends React.Component {
         e.preventDefault();
         let tweetUrl = encodeURIComponent(`${this.state.texts}`);
         console.log(tweetUrl);
-        return window.location.href =`https://twitter.com/intent/tweet?text=${tweetUrl}`
+        return window.open(`https://twitter.com/intent/tweet?text=${tweetUrl}`);
     } 
 
     resetWindow = e => {
