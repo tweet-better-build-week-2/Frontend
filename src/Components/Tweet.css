@@ -25,8 +25,8 @@
     font-weight: 500;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     border-radius: 4px;
-    background-color: #fa3437;
-    color: white;
+    background-color: white;
+    color: #3437fa;
     margin-top: 25px;
     margin-right: auto;
     margin-left: auto;
@@ -34,7 +34,8 @@
 
 .twitter-profile {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     margin-top: 20px;
 }
 

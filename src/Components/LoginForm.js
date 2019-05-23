@@ -37,8 +37,7 @@ class LoginForm extends Component {
         return (
             <div>
                 <div className="login-form">
-                    <Link className="home-link" to="/">Home</Link>
-                    {/* <Link className="home-link" to="/tweet">Tweet</Link> */}
+                    <a className="home-link" href="https://tweetbetter.netlify.com/">Home</a>
                 </div>
                 <div className="welcome-text">
                     <h1>Tweeting Reinvented</h1>

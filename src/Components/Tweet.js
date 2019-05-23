@@ -35,15 +35,22 @@ class Tweet extends React.Component {
 
     analyzeTweet = e => {
         e.preventDefault();
-        this.props.analyze(this.state);
+        if (this.state.texts === "") {
+            return {}
+        } else {
+            this.props.analyze(this.state)
+        }
     }
 
     postToTwitter = e => {
         e.preventDefault();
         let tweetUrl = encodeURIComponent(`${this.state.texts}`);
-        console.log(tweetUrl);
+        this.setState({
+            texts: "",
+        })
+        this.props.resetWindow();
         return window.open(`https://twitter.com/intent/tweet?text=${tweetUrl}`);
-    } 
+    }
 
     resetWindow = e => {
         e.preventDefault();
@@ -51,6 +58,10 @@ class Tweet extends React.Component {
             texts: "",
         })
         this.props.resetWindow();
+    }
+
+    percentageScore = () => {
+        return (Math.round(((this.props.score / 2) + 0.5) * 100));
     }
 
     render() {
@@ -83,7 +94,7 @@ class Tweet extends React.Component {
                                 label='Analyze Tweet'
                                 onClick={this.analyzeTweet}
                                 style={{
-                                    backgroundColor: "#349AFA",
+                                    backgroundColor: "#fa3437",
                                     color: "white",
                                     textDecoration: "none"
                                 }}>{this.props.fetchingData ? (
@@ -108,7 +119,7 @@ class Tweet extends React.Component {
                                 label='Post to Twitter'
                                 onClick={this.postToTwitter}
                                 style={{
-                                    backgroundColor: "#349AFA",
+                                    backgroundColor: "#3437fa",
                                     color: "white",
                                     textDecoration: "none"
                                 }}>
@@ -116,19 +127,20 @@ class Tweet extends React.Component {
                                 </Button>
                         </div>
                         <div className="score-display">
-                            {this.props.score < -0.5 ? (<p>Tweet Sentiment = Very Negative</p>)
+                            {this.props.score < -0.5 ? (<p>Tweet Sentiment = Very Negative<br />Score: {this.percentageScore()}%</p>)
                                 :
-                                this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Negative</p>)
+                                this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Negative<br />Score: {this.percentageScore()}%</p>)
                                     :
-                                    this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Neutral</p>)
+                                    this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Neutral<br />Score: {this.percentageScore()}%</p>)
                                         :
-                                        this.props.score > -0.2 && this.props.score < 0.2 && this.props.score !== '' ? (<p>Tweet Sentiment = Positive</p>)
+                                        this.props.score === 0 && this.state.texts === "" ? (<p>Whoops, no Tweet Found</p>)
                                             :
-                                            this.props.score > 0.2 ? (<p>Tweet Sentiment = Very Positive</p>)
+                                            this.props.score > -0.2 && this.props.score < 0.2 && this.props.score !== "" ? (<p>Tweet Sentiment = Positive<br />Score: {this.percentageScore()}%</p>)
                                                 :
-                                                this.props.score === '' ? (<p>Ready to Analyze</p>)
+                                                this.props.score > 0.2 ? (<p>Tweet Sentiment = Very Positive<br />Score: {this.percentageScore()}%</p>)
                                                     :
-                                                    (<p>Whoops, sorry there seems to be an error..</p>)}
+                                                    this.props.score === "" ? (<p>Ready to Analyze</p>) : null}
+
                         </div>
                     </div>
                 </div>
