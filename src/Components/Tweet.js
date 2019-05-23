@@ -1,11 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { analyze } from '../actions';
+import { analyze, resetWindow } from '../actions';
 import Auth from "../Auth";
 import './Tweet.css';
 
@@ -18,11 +17,11 @@ class Tweet extends React.Component {
     constructor() {
         super();
         this.state = {
-            texts: ''
+            texts: '',
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const auth = new Auth();
         auth.handleAuthentication();
         if (!localStorage.getItem("access_token")) this.props.history.push("/")
@@ -34,16 +33,24 @@ class Tweet extends React.Component {
         })
     }
 
-    analyzeTweet = (e) => {
+    analyzeTweet = e => {
         e.preventDefault();
         this.props.analyze(this.state);
     }
 
-    postToTwitter = (e) => {
+    postToTwitter = e => {
         e.preventDefault();
-        axios.post('https://api.twitter.com/1.1/statuses/update.json')
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        let tweetUrl = encodeURIComponent(`${this.state.texts}`);
+        console.log(tweetUrl);
+        return window.open(`https://twitter.com/intent/tweet?text=${tweetUrl}`);
+    } 
+
+    resetWindow = e => {
+        e.preventDefault();
+        this.setState({
+            texts: "",
+        })
+        this.props.resetWindow();
     }
 
     render() {
@@ -55,8 +62,8 @@ class Tweet extends React.Component {
                 <div className="outside-container">
                     <div className="tweet-container">
                         <div className="twitter-profile">
-                        <img className="twitter-img" src={profilePicture} alt="{username}'s profile pic"/> 
-                        <p>Hi {username}, what would you like to tweet?</p>
+                            <img className="twitter-img" src={profilePicture} alt="{username}'s profile pic" />
+                            <p>{username}</p>
                         </div>
                         <TextField
                             id="outlined-multiline-flexible"
@@ -87,7 +94,19 @@ class Tweet extends React.Component {
                             </Button>
                             <Button variant="contained"
                                 color="primary"
+                                label='Reset'
+                                onClick={this.resetWindow}
+                                style={{
+                                    backgroundColor: "#349AFA",
+                                    color: "white",
+                                    textDecoration: "none"
+                                }}>
+                                Reset
+                                </Button>
+                            <Button variant="contained"
+                                color="primary"
                                 label='Post to Twitter'
+                                onClick={this.postToTwitter}
                                 style={{
                                     backgroundColor: "#349AFA",
                                     color: "white",
@@ -97,14 +116,19 @@ class Tweet extends React.Component {
                                 </Button>
                         </div>
                         <div className="score-display">
-                            {this.props.score < -0.2 ?
-                                (<p>Your Tweet May Seem Negative</p>)
+                            {this.props.score < -0.5 ? (<p>Tweet Sentiment = Very Negative</p>)
                                 :
-                                this.props.score > 0.5 ? (<p>You're Improving Twitter One Tweet at a Time</p>)
-                                :
-                                this.props.score === '' ? (<p>Ready to Analyze</p>)
-                                :
-                                    (<p>This is a Pretty Neutral Tweet</p>)}
+                                this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Negative</p>)
+                                    :
+                                    this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Neutral</p>)
+                                        :
+                                        this.props.score > -0.2 && this.props.score < 0.2 && this.props.score !== '' ? (<p>Tweet Sentiment = Positive</p>)
+                                            :
+                                            this.props.score > 0.2 ? (<p>Tweet Sentiment = Very Positive</p>)
+                                                :
+                                                this.props.score === '' ? (<p>Ready to Analyze</p>)
+                                                    :
+                                                    (<p>Whoops, sorry there seems to be an error..</p>)}
                         </div>
                     </div>
                 </div>
@@ -120,5 +144,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { analyze }
+    { analyze, resetWindow }
 )(Tweet);
