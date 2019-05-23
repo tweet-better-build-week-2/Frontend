@@ -9,8 +9,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
       domain: "gustavo-isturiz.auth0.com",
       clientID: "WYhn9XBGcR2XR73jYXbWwfmGUfxm0E1U",
-      // redirectUri: "https://tweetbetterapp.netlify.com/tweet",
-      redirectUri: "http://localhost:3000/tweet",
+      redirectUri: "https://tweetbetterapp.netlify.com/tweet",
       audience: "https://gustavo-isturiz.auth0.com/userinfo",
       responseType: "token id_token",
       scope: "openid profile"
