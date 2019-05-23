@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, ANALYZE_START, ANALYZE_SUCCESS, ANALYZE_FAILURE } from "../actions";
+import { LOGIN_START, LOGIN_SUCCESS, ANALYZE_START, ANALYZE_SUCCESS, ANALYZE_FAILURE, RESET_SCORE } from "../actions";
 
 const initialState = {
     error: "",
@@ -38,6 +38,11 @@ const reducer = (state = initialState, action) => {
             fetchingData: false,
             error: action.payload
           }
+        case RESET_SCORE:
+            return {
+                ...state,
+                score:'',
+            }
         default:
             return state;
     }

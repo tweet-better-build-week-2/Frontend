@@ -32,3 +32,9 @@ export const analyze = tweet  => dispatch => {
         dispatch({ type: ANALYZE_FAILURE, payload: err });
     });
 };
+
+export const RESET_SCORE = 'RESET_SCORE'
+
+export const resetWindow = () => dispatch => {
+  dispatch({ type: RESET_SCORE});
+}
