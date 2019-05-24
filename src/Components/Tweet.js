@@ -8,6 +8,7 @@ import { analyze, resetWindow } from '../actions';
 import Auth from "../Auth";
 import './Tweet.css';
 
+
 const auth = new Auth();
 
 let username = auth.getProfile().name;
@@ -131,11 +132,11 @@ class Tweet extends React.Component {
                                 :
                                 this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Negative<br />Score: {this.percentageScore()}%</p>)
                                     :
-                                    this.props.score > -0.5 && this.props.score < -0.2 ? (<p>Tweet Sentiment = Neutral<br />Score: {this.percentageScore()}%</p>)
+                                    this.props.score > -0.2 && this.props.score < 0.2 && this.props.score !== "" ? (<p>Tweet Sentiment = Neutral<br />Score: {this.percentageScore()}%</p>)
                                         :
-                                        this.props.score > -0.2 && this.props.score < 0.2 && this.props.score !== "" ? (<p>Tweet Sentiment = Positive<br />Score: {this.percentageScore()}%</p>)
+                                        this.props.score > 0.2 && this.props.score < 0.5 ? (<p>Tweet Sentiment = Positive<br />Score: {this.percentageScore()}%</p>)
                                             :
-                                            this.props.score > 0.2 ? (<p>Tweet Sentiment = Very Positive<br />Score: {this.percentageScore()}%</p>)
+                                            this.props.score > 0.5 ? (<p>Tweet Sentiment = Very Positive<br />Score: {this.percentageScore()}%</p>)
                                                 :
                                                 this.props.score === "" ? (<p>Ready to Analyze</p>) : null}
 
