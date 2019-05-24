@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 // import Loader from 'react-loader-spinner';
 import { login } from '../actions';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Auth from "../Auth";
 
 const auth = new Auth();
